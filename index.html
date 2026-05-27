@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=1280, height=720" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1280,height=720">
 <title>わんも～推し犬総選挙 結果発表</title>
 
 <style>
+
 @font-face{
-  font-family:'Panda';
+  font-family:'PandaBakery';
   src:url('pandabakery.ttf');
 }
 
@@ -21,13 +22,15 @@ body{
   width:1280px;
   height:720px;
   overflow:hidden;
-  font-family:'Panda',sans-serif;
   position:relative;
-  color:#fff;
-  background:#000;
+  font-family:'PandaBakery',sans-serif;
+  color:white;
+  background:#fff7ef;
 }
 
-.background{
+/* 背景 */
+
+.bg{
   position:absolute;
   inset:0;
   width:100%;
@@ -41,17 +44,45 @@ body{
   inset:0;
   background:
   linear-gradient(
-    rgba(255,255,255,0.10),
-    rgba(255,255,255,0.05)
+    rgba(255,255,255,0.12),
+    rgba(255,255,255,0.06)
   );
   z-index:1;
 }
 
-.top-area{
+/* キラキラ */
+
+.sparkle{
   position:absolute;
-  top:18px;
-  left:30px;
-  right:30px;
+  width:12px;
+  height:12px;
+  background:rgba(255,255,255,0.8);
+  border-radius:50%;
+  filter:blur(2px);
+  animation:float 4s infinite ease-in-out;
+}
+
+.sparkle::after{
+  content:"";
+  position:absolute;
+  inset:-5px;
+  border-radius:50%;
+  border:2px solid rgba(255,255,255,0.45);
+}
+
+@keyframes float{
+  0%{ transform:translateY(0px) scale(1);}
+  50%{ transform:translateY(-12px) scale(1.2);}
+  100%{ transform:translateY(0px) scale(1);}
+}
+
+/* 上 */
+
+.top{
+  position:absolute;
+  top:10px;
+  left:20px;
+  right:20px;
   display:flex;
   justify-content:space-between;
   align-items:flex-start;
@@ -62,228 +93,325 @@ body{
   height:140px;
   object-fit:contain;
   filter:
-  drop-shadow(0 0 12px rgba(255,255,255,0.45))
-  drop-shadow(0 0 25px rgba(255,180,220,0.45));
+  drop-shadow(0 0 15px rgba(255,255,255,0.8))
+  drop-shadow(0 0 30px rgba(255,180,220,0.5));
 }
 
 .cafe-logo{
-  height:110px;
+  height:100px;
   object-fit:contain;
-  opacity:0.96;
-  filter:drop-shadow(0 0 10px rgba(255,255,255,0.35));
+  margin-top:12px;
+  filter:drop-shadow(0 0 10px rgba(255,255,255,0.5));
 }
 
-.rank-grid{
+/* ランキング */
+
+.grid{
   position:absolute;
-  top:150px;
-  left:30px;
-  right:30px;
-  bottom:20px;
+  top:145px;
+  left:20px;
+  right:20px;
+  bottom:18px;
+
   display:grid;
   grid-template-columns:repeat(5,1fr);
   grid-template-rows:repeat(2,1fr);
-  gap:18px;
+  gap:16px;
+
   z-index:3;
 }
 
 .card{
   position:relative;
-  overflow:hidden;
   border-radius:28px;
-  padding:14px;
-  backdrop-filter:blur(8px);
-  background:rgba(255,255,255,0.16);
-  border:2px solid rgba(255,255,255,0.22);
+  overflow:hidden;
+
+  background:
+  linear-gradient(
+    180deg,
+    rgba(255,255,255,0.34),
+    rgba(255,255,255,0.15)
+  );
+
+  backdrop-filter:blur(10px);
+
+  border:2px solid rgba(255,255,255,0.45);
+
   box-shadow:
-  0 10px 30px rgba(0,0,0,0.25),
-  inset 0 0 20px rgba(255,255,255,0.08);
+  0 10px 25px rgba(0,0,0,0.18),
+  inset 0 0 18px rgba(255,255,255,0.22);
+
+  padding:12px;
+
   display:flex;
   flex-direction:column;
-  justify-content:space-between;
-  transition:0.4s;
 }
 
 .card::before{
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(
+  background:
+  linear-gradient(
     135deg,
-    rgba(255,255,255,0.22),
+    rgba(255,255,255,0.25),
     transparent 40%
   );
   pointer-events:none;
 }
 
-.card img{
-  width:100%;
-  height:170px;
-  object-fit:cover;
-  border-radius:20px;
-  margin-bottom:10px;
-  box-shadow:0 6px 18px rgba(0,0,0,0.25);
-}
-
-.rank{
-  position:absolute;
-  top:10px;
-  left:10px;
-  padding:8px 14px;
-  border-radius:999px;
-  font-size:26px;
-  background:rgba(0,0,0,0.48);
-  backdrop-filter:blur(6px);
-  text-shadow:0 0 8px rgba(0,0,0,0.5);
-}
-
-.name{
-  font-size:28px;
-  line-height:1.15;
-  text-align:center;
-  text-shadow:
-  0 2px 10px rgba(0,0,0,0.5),
-  0 0 12px rgba(255,255,255,0.25);
-}
-
-.vote{
-  margin-top:6px;
-  text-align:center;
-  font-size:34px;
-  color:#fff6b3;
-  text-shadow:
-  0 0 12px rgba(255,230,120,0.85),
-  0 2px 8px rgba(0,0,0,0.55);
-}
-
 .gold{
   background:
   linear-gradient(
-    135deg,
-    rgba(255,220,120,0.42),
-    rgba(255,170,0,0.18)
+    180deg,
+    rgba(255,236,160,0.48),
+    rgba(255,192,70,0.18)
   );
-  border:2px solid rgba(255,235,170,0.8);
+
+  border:2px solid rgba(255,245,190,0.9);
+
+  box-shadow:
+  0 0 20px rgba(255,220,100,0.4),
+  0 10px 25px rgba(0,0,0,0.22);
 }
 
 .silver{
   background:
   linear-gradient(
-    135deg,
-    rgba(220,230,255,0.38),
-    rgba(170,190,255,0.18)
+    180deg,
+    rgba(225,235,255,0.45),
+    rgba(175,195,255,0.16)
   );
-  border:2px solid rgba(230,240,255,0.8);
+
+  border:2px solid rgba(240,245,255,0.9);
+
+  box-shadow:
+  0 0 18px rgba(200,220,255,0.45),
+  0 10px 25px rgba(0,0,0,0.22);
 }
 
 .bronze{
   background:
   linear-gradient(
-    135deg,
-    rgba(255,200,160,0.35),
-    rgba(220,120,80,0.18)
+    180deg,
+    rgba(255,215,180,0.42),
+    rgba(210,130,80,0.16)
   );
-  border:2px solid rgba(255,220,190,0.8);
+
+  border:2px solid rgba(255,225,200,0.9);
+
+  box-shadow:
+  0 0 18px rgba(255,185,120,0.4),
+  0 10px 25px rgba(0,0,0,0.22);
+}
+
+/* 順位 */
+
+.rank{
+  position:absolute;
+  top:10px;
+  left:10px;
+
+  min-width:64px;
+  height:64px;
+
+  border-radius:50%;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:26px;
+
+  color:white;
+
+  background:rgba(0,0,0,0.48);
+
+  backdrop-filter:blur(6px);
+
+  z-index:5;
+
+  text-shadow:
+  0 2px 6px rgba(0,0,0,0.5);
+}
+
+/* 画像 */
+
+.photo{
+  width:100%;
+  height:165px;
+  object-fit:cover;
+  border-radius:20px;
+  margin-bottom:10px;
+
+  box-shadow:
+  0 6px 16px rgba(0,0,0,0.22);
+}
+
+/* 名前 */
+
+.name{
+  font-size:27px;
+  line-height:1.1;
+  text-align:center;
+
+  text-shadow:
+  0 2px 8px rgba(0,0,0,0.45),
+  0 0 10px rgba(255,255,255,0.2);
+
+  margin-bottom:4px;
 }
 
 .small{
-  font-size:23px;
-  line-height:1.1;
+  font-size:20px;
+  line-height:1.05;
 }
+
+/* 票数 */
+
+.vote{
+  text-align:center;
+  font-size:34px;
+
+  color:#fff3a8;
+
+  text-shadow:
+  0 0 15px rgba(255,225,120,0.9),
+  0 2px 8px rgba(0,0,0,0.45);
+}
+
+/* 下 */
+
+.bottom-message{
+  position:absolute;
+  bottom:8px;
+  left:0;
+  width:100%;
+
+  text-align:center;
+
+  font-size:34px;
+
+  z-index:6;
+
+  color:white;
+
+  text-shadow:
+  0 0 10px rgba(255,180,220,0.7),
+  0 2px 8px rgba(0,0,0,0.35);
+}
+
 </style>
 </head>
 
 <body>
 
-<img src="haikei.png" class="background">
+<img src="haikei.png" class="bg">
 <div class="overlay"></div>
 
-<div class="top-area">
+<!-- キラキラ -->
+<div class="sparkle" style="top:90px;left:200px;"></div>
+<div class="sparkle" style="top:180px;left:1080px;"></div>
+<div class="sparkle" style="top:620px;left:120px;"></div>
+<div class="sparkle" style="top:520px;left:980px;"></div>
+<div class="sparkle" style="top:250px;left:620px;"></div>
+
+<!-- 上 -->
+<div class="top">
   <img src="wan_logo.png" class="main-logo">
   <img src="wanmow_logo.png" class="cafe-logo">
 </div>
 
-<div class="rank-grid">
+<!-- ランキング -->
+<div class="grid">
 
   <!-- 1 -->
   <div class="card gold">
-    <div class="rank">🥇 1位</div>
-    <img src="pomeranian.png">
+    <div class="rank">🥇</div>
+    <img src="pomeranian.png" class="photo">
     <div class="name">ポメラニアン</div>
     <div class="vote">4673票</div>
   </div>
 
   <!-- 2 -->
   <div class="card silver">
-    <div class="rank">🥈 2位</div>
-    <img src="husky.png">
+    <div class="rank">🥈</div>
+    <img src="husky.png" class="photo">
     <div class="name">ハスキー</div>
     <div class="vote">2592票</div>
   </div>
 
   <!-- 3 -->
   <div class="card bronze">
-    <div class="rank">🥉 3位</div>
-    <img src="pug.png">
+    <div class="rank">🥉</div>
+    <img src="pug.png" class="photo">
     <div class="name">パグ</div>
     <div class="vote">1524票</div>
   </div>
 
   <!-- 4 -->
   <div class="card">
-    <div class="rank">4位</div>
-    <img src="poodle.png">
+    <div class="rank">4</div>
+    <img src="poodle.png" class="photo">
     <div class="name">プードル</div>
     <div class="vote">1288票</div>
   </div>
 
   <!-- 5 -->
   <div class="card">
-    <div class="rank">5位</div>
-    <img src="chihuahua.png">
+    <div class="rank">5</div>
+    <img src="chihuahua.png" class="photo">
     <div class="name">チワワ</div>
     <div class="vote">866票</div>
   </div>
 
   <!-- 6 -->
   <div class="card">
-    <div class="rank">6位</div>
-    <img src="dachs(1).png">
+    <div class="rank">6</div>
+    <img src="dachs(1).png" class="photo">
     <div class="name">ダックスフンド</div>
     <div class="vote">796票</div>
   </div>
 
   <!-- 7 -->
   <div class="card">
-    <div class="rank">7位</div>
-    <img src="schna(1).png">
+    <div class="rank">7</div>
+    <img src="schna(1).png" class="photo">
     <div class="name">シュナウザー</div>
     <div class="vote">747票</div>
   </div>
 
   <!-- 8 -->
   <div class="card">
-    <div class="rank">8位</div>
-    <img src="maltipoo(1).png">
-    <div class="name small">マルチーズ＆トイプードル<br>（マルトイプー）</div>
+    <div class="rank">8</div>
+    <img src="maltipoo(1).png" class="photo">
+    <div class="name small">
+      マルチーズ＆トイプードル<br>
+      （マルトイプー）
+    </div>
     <div class="vote">305票</div>
   </div>
 
   <!-- 9 -->
   <div class="card">
-    <div class="rank">9位</div>
-    <img src="shiba(1).png">
+    <div class="rank">9</div>
+    <img src="shiba(1).png" class="photo">
     <div class="name">柴犬</div>
     <div class="vote">143票</div>
   </div>
 
   <!-- 10 -->
   <div class="card">
-    <div class="rank">10位</div>
-    <img src="cavalier(1).png">
+    <div class="rank">10</div>
+    <img src="cavalier(1).png" class="photo">
     <div class="name">キャバリア</div>
     <div class="vote">101票</div>
   </div>
 
+</div>
+
+<div class="bottom-message">
+  🐾 たくさんのご投票ありがとうございました！ 🐾
 </div>
 
 </body>
