@@ -51,12 +51,59 @@ body{
   z-index:1;
 }
 
-/* 上 */
+/* 上テキスト */
+
+.thanks{
+  position:absolute;
+
+  top:8px;
+  left:0;
+
+  width:100%;
+
+  text-align:center;
+
+  font-size:24px;
+
+  color:#7a4214;
+
+  z-index:20;
+
+  text-shadow:
+  0 1px 0 rgba(255,255,255,0.95),
+  0 0 8px rgba(255,210,220,0.45);
+}
+
+.result-title{
+  position:absolute;
+
+  top:32px;
+  left:0;
+
+  width:100%;
+
+  text-align:center;
+
+  font-size:88px;
+
+  color:#ff7a9f;
+
+  letter-spacing:6px;
+
+  z-index:20;
+
+  text-shadow:
+  0 3px 0 rgba(255,255,255,0.95),
+  0 0 18px rgba(255,255,255,0.9),
+  0 0 35px rgba(255,180,220,0.45);
+}
+
+/* ロゴ */
 
 .top{
   position:absolute;
 
-  top:8px;
+  top:18px;
   left:20px;
   right:20px;
 
@@ -68,7 +115,7 @@ body{
 }
 
 .main-logo{
-  height:135px;
+  height:118px;
   object-fit:contain;
 
   filter:
@@ -77,10 +124,10 @@ body{
 }
 
 .cafe-logo{
-  height:95px;
+  height:82px;
   object-fit:contain;
 
-  margin-top:10px;
+  margin-top:8px;
 }
 
 /* 全体 */
@@ -88,7 +135,7 @@ body{
 .wrapper{
   position:absolute;
 
-  top:120px;
+  top:150px;
   left:20px;
   right:20px;
   bottom:10px;
@@ -109,10 +156,10 @@ body{
 }
 
 .top3 .card{
-  height:325px;
+  height:335px;
 }
 
-/* 4~10 */
+/* 下 */
 
 .bottom7{
   display:grid;
@@ -129,7 +176,7 @@ body{
 .card{
   position:relative;
 
-  border-radius:28px;
+  border-radius:30px;
 
   overflow:hidden;
 
@@ -138,7 +185,7 @@ body{
   background:
   linear-gradient(
     180deg,
-    rgba(255,255,255,0.36),
+    rgba(255,255,255,0.38),
     rgba(255,255,255,0.16)
   );
 
@@ -147,7 +194,7 @@ body{
   backdrop-filter:blur(10px);
 
   box-shadow:
-  0 10px 24px rgba(0,0,0,0.18),
+  0 10px 24px rgba(0,0,0,0.16),
   inset 0 0 18px rgba(255,255,255,0.2);
 
   display:flex;
@@ -155,23 +202,7 @@ body{
   align-items:center;
 }
 
-.card::before{
-  content:"";
-
-  position:absolute;
-  inset:0;
-
-  background:
-  linear-gradient(
-    135deg,
-    rgba(255,255,255,0.20),
-    transparent 40%
-  );
-
-  pointer-events:none;
-}
-
-/* TOP3 */
+/* TOP3カラー */
 
 .gold{
   background:
@@ -180,30 +211,24 @@ body{
     rgba(255,235,170,0.50),
     rgba(255,200,70,0.20)
   );
-
-  border:2px solid rgba(255,245,190,0.9);
 }
 
 .silver{
   background:
   linear-gradient(
     180deg,
-    rgba(225,235,255,0.48),
-    rgba(175,195,255,0.18)
+    rgba(225,235,255,0.50),
+    rgba(175,195,255,0.20)
   );
-
-  border:2px solid rgba(240,245,255,0.9);
 }
 
 .bronze{
   background:
   linear-gradient(
     180deg,
-    rgba(255,215,180,0.44),
+    rgba(255,215,180,0.46),
     rgba(210,130,80,0.18)
   );
-
-  border:2px solid rgba(255,225,200,0.9);
 }
 
 /* 順位 */
@@ -218,35 +243,41 @@ body{
 
   border-radius:999px;
 
-  background:rgba(120,70,30,0.88);
+  background:#7b4718;
 
   color:white;
 
   font-size:24px;
 
   z-index:5;
-
-  box-shadow:
-  0 3px 10px rgba(0,0,0,0.2);
 }
 
 /* TOP3画像 */
 
 .top3 .photo{
-  width:160px;
-  height:160px;
+  width:175px;
+  height:175px;
 
   object-fit:cover;
+  object-position:center;
 
   border-radius:50%;
 
-  margin-top:22px;
-  margin-bottom:10px;
+  margin-top:24px;
+  margin-bottom:12px;
 
-  border:5px solid rgba(255,255,255,0.9);
+  border:5px solid rgba(255,255,255,0.95);
 
   box-shadow:
-  0 8px 20px rgba(0,0,0,0.22);
+  0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* ポメだけ補正 */
+
+.pome{
+  object-fit:contain !important;
+  background:white;
+  padding:6px;
 }
 
 /* 下画像 */
@@ -262,16 +293,13 @@ body{
   margin-top:14px;
   margin-bottom:6px;
 
-  border:4px solid rgba(255,255,255,0.9);
-
-  box-shadow:
-  0 6px 14px rgba(0,0,0,0.2);
+  border:4px solid rgba(255,255,255,0.95);
 }
 
 /* TOP3名前 */
 
 .top3 .name{
-  font-size:54px;
+  font-size:52px;
   line-height:1.02;
 
   color:#6b3400;
@@ -282,7 +310,7 @@ body{
 
   text-shadow:
   0 2px 0 rgba(255,255,255,0.9),
-  0 0 10px rgba(255,255,255,0.4);
+  0 0 10px rgba(255,255,255,0.35);
 }
 
 /* 下名前 */
@@ -295,16 +323,11 @@ body{
 
   text-align:center;
 
-  min-height:48px;
+  min-height:50px;
 
   display:flex;
   align-items:center;
   justify-content:center;
-
-  margin-bottom:2px;
-
-  text-shadow:
-  0 1px 0 rgba(255,255,255,0.8);
 }
 
 .small{
@@ -314,54 +337,52 @@ body{
 /* TOP3票 */
 
 .top3 .vote{
-  font-size:58px;
-
-  color:#ff7f50;
-
-  text-shadow:
-  0 0 14px rgba(255,255,255,0.8),
-  0 2px 8px rgba(0,0,0,0.35);
-}
-
-/* 下票 */
-
-.bottom7 .vote{
-  font-size:28px;
-
-  color:#ff7f50;
-
-  min-height:36px;
+  min-height:72px;
 
   display:flex;
   align-items:center;
   justify-content:center;
 
+  font-size:56px;
+
+  padding:0 24px;
+
+  border-radius:20px;
+
+  background:rgba(255,255,255,0.72);
+
+  color:#ff6f61;
+
   text-shadow:
-  0 0 10px rgba(255,255,255,0.8),
-  0 2px 8px rgba(0,0,0,0.3);
+  0 0 10px rgba(255,255,255,0.8);
+
+  box-shadow:
+  0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* ありがとう */
+/* 下票 */
 
-.bottom-message{
-  position:absolute;
-
-  top:455px;
-  left:0;
-
+.bottom7 .vote{
   width:100%;
 
-  text-align:center;
+  min-height:40px;
 
-  font-size:30px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-  color:#6a3500;
+  font-size:28px;
 
-  z-index:20;
+  border-radius:14px;
+
+  background:rgba(255,255,255,0.72);
+
+  color:#8c5cff;
 
   text-shadow:
-  0 1px 0 rgba(255,255,255,0.9),
-  0 0 10px rgba(255,200,220,0.5);
+  0 0 8px rgba(255,255,255,0.9);
+
+  margin-top:auto;
 }
 
 </style>
@@ -371,6 +392,14 @@ body{
 
 <img src="haikei.png" class="bg">
 <div class="overlay"></div>
+
+<div class="thanks">
+  🐾 たくさんのご投票ありがとうございました！ 🐾
+</div>
+
+<div class="result-title">
+  結果発表
+</div>
 
 <div class="top">
   <img src="wan_logo.png" class="main-logo">
@@ -382,15 +411,13 @@ body{
   <!-- TOP3 -->
   <div class="top3">
 
-    <!-- 1 -->
     <div class="card gold">
       <div class="rank">1位</div>
-      <img src="pomeranian.png" class="photo">
+      <img src="pomeranian.png" class="photo pome">
       <div class="name">ポメラニアン</div>
       <div class="vote">4673票</div>
     </div>
 
-    <!-- 2 -->
     <div class="card silver">
       <div class="rank">2位</div>
       <img src="husky.png" class="photo">
@@ -398,7 +425,6 @@ body{
       <div class="vote">2592票</div>
     </div>
 
-    <!-- 3 -->
     <div class="card bronze">
       <div class="rank">3位</div>
       <img src="pug.png" class="photo">
@@ -406,11 +432,6 @@ body{
       <div class="vote">1524票</div>
     </div>
 
-  </div>
-
-  <!-- メッセージ -->
-  <div class="bottom-message">
-    🐾 たくさんのご投票ありがとうございました！ 🐾
   </div>
 
   <!-- 4~10 -->
