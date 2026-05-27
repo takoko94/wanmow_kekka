@@ -49,7 +49,7 @@ body{
   z-index:1;
 }
 
-/* 上テキスト */
+/* 上文字 */
 
 .thanks{
   position:absolute;
@@ -99,7 +99,7 @@ body{
 .top{
   position:absolute;
 
-  top:20px;
+  top:18px;
   left:20px;
   right:20px;
 
@@ -111,16 +111,12 @@ body{
 }
 
 .main-logo{
-  height:110px;
+  height:118px;
   object-fit:contain;
-
-  filter:
-  drop-shadow(0 0 14px rgba(255,255,255,0.7))
-  drop-shadow(0 0 28px rgba(255,180,220,0.4));
 }
 
 .cafe-logo{
-  height:78px;
+  height:82px;
   object-fit:contain;
 }
 
@@ -247,6 +243,7 @@ body{
 }
 
 /* TOP3画像 */
+/* 全員ポメと同じサイズ・比率 */
 
 .top3 .photo{
   width:175px;
@@ -258,19 +255,14 @@ body{
   border-radius:50%;
 
   margin-top:24px;
-  margin-bottom:12px;
+  margin-bottom:14px;
 
   border:5px solid rgba(255,255,255,0.95);
 
   box-shadow:
   0 8px 20px rgba(0,0,0,0.2);
-}
 
-/* ポメ修正 */
-
-.pome{
-  object-fit:cover !important;
-  object-position:center center !important;
+  flex-shrink:0;
 }
 
 /* 下画像 */
@@ -291,16 +283,21 @@ body{
 }
 
 /* TOP3名前 */
+/* 全員一行固定 */
 
 .top3 .name{
+  width:100%;
+
   font-size:52px;
-  line-height:1.02;
+  line-height:1;
 
   color:#6b3400;
 
   text-align:center;
 
-  margin-bottom:8px;
+  margin-bottom:12px;
+
+  white-space:nowrap;
 
   text-shadow:
   0 2px 0 rgba(255,255,255,0.9),
@@ -329,6 +326,7 @@ body{
 }
 
 /* TOP3票 */
+/* 全員ポメと同じ */
 
 .top3 .vote{
   width:280px;
@@ -338,11 +336,11 @@ body{
   align-items:center;
   justify-content:center;
 
-  font-size:50px;
+  font-size:52px;
 
-  border-radius:20px;
+  border-radius:22px;
 
-  background:rgba(255,255,255,0.78);
+  background:rgba(255,255,255,0.82);
 
   color:#ff7b73;
 
@@ -354,6 +352,8 @@ body{
 
   overflow:hidden;
   white-space:nowrap;
+
+  flex-shrink:0;
 }
 
 /* 下票 */
@@ -411,7 +411,7 @@ body{
 
     <div class="card gold">
       <div class="rank">1位</div>
-      <img src="pomeranian.png" class="photo pome">
+      <img src="pomeranian.png" class="photo">
       <div class="name">ポメラニアン</div>
       <div class="vote">4673票</div>
     </div>
